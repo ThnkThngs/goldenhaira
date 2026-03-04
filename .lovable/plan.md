@@ -1,21 +1,26 @@
 
 
-## Create Light Shade Section
+## Revert to Cream/Gold Color Palette
 
-A new `LightShadeSection` component following the existing split-layout pattern (50/50 grid with image + text), and wire it into the page + nav.
+The Avoca-style layouts (split hero, accordions, image grid, FAQ) are already in place and will stay. Only the **color palette** in `src/index.css` needs to change — reverting from deep green to a warm cream/gold scheme.
 
-### New Component: `src/components/LightShadeSection.tsx`
-- Split layout matching BenefitsGrid/HeroSection pattern: image left, content right
-- `id="light-shade"` for anchor linking
-- Content about the Light Shade variant of the product (lighter formula for fine/light-colored hair)
-- Uses existing product image asset as placeholder
-- Framer Motion fade-in animations matching other sections
-- Semantic Tailwind tokens for colors
+### Color Variable Changes (`src/index.css`)
 
-### Edit: `src/pages/Index.tsx`
-- Import `LightShadeSection` (lazy loaded)
-- Place it after `ProductShowcase` and before `BenefitsGrid` in the below-fold `<Suspense>` block
+| Token | Current (Green) | New (Cream/Gold) |
+|-------|----------------|------------------|
+| `--background` | `160 25% 22%` (deep green) | `40 33% 96%` (warm cream) |
+| `--foreground` | `36 33% 93%` (cream) | `30 10% 15%` (dark brown/charcoal) |
+| `--card` | `160 22% 18%` (darker green) | `38 30% 92%` (slightly darker cream) |
+| `--primary` | stays gold | stays gold |
+| `--secondary` | green tones | warm neutral tones |
+| `--muted` | green tones | warm neutral tones |
+| `--border/input` | green tones | warm neutral tones |
+| `--dark/dark-deep` | deep green | dark warm brown |
 
-### Nav Link
-- Already wired: `{ href: '#light-shade', label: 'Light Shade' }` exists in Navigation.tsx — will scroll to the new `id="light-shade"` section automatically
+All component files use Tailwind semantic tokens (`bg-background`, `text-foreground`, `bg-card`, `text-primary`, etc.), so they will automatically pick up the new palette — **no component file changes needed**.
+
+Only the custom utility class `bg-dark-deep` used in `Footer.tsx` and `CTABanner.tsx` will need the custom token updated in CSS, which is covered by the variable change.
+
+### Single File to Edit
+- **`src/index.css`** — Update all CSS custom property values to cream/gold/warm brown scheme
 
