@@ -1,8 +1,9 @@
 import { lazy, Suspense } from 'react';
 import Navigation from '@/components/Navigation';
 import Marquee from '@/components/Marquee';
-import ClickSpark from '@/components/ClickSpark';
 import HeroSection from '@/components/HeroSection';
+
+const ClickSpark = lazy(() => import('@/components/ClickSpark'));
 
 const FloatingOrderButton = lazy(() => import('@/components/FloatingOrderButton'));
 const ProductShowcase = lazy(() => import('@/components/ProductShowcase'));
@@ -19,7 +20,9 @@ const Footer = lazy(() => import('@/components/Footer'));
 const Index = () => {
   return (
     <>
-      <ClickSpark />
+      <Suspense fallback={null}>
+        <ClickSpark />
+      </Suspense>
       <Navigation />
       <HeroSection />
       <Marquee />

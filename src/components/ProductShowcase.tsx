@@ -97,7 +97,9 @@ const ProductShowcase = () => {
                   }`}
                 >
                   {media.type === 'video' ? (
-                    <video src={media.src} muted preload="none" className="w-full h-full object-cover" />
+                    <div className="w-full h-full bg-muted flex items-center justify-center">
+                      <span className="text-primary text-lg">▶</span>
+                    </div>
                   ) : (
                     <img src={media.thumb} alt={media.alt} className="w-full h-full object-cover" loading="lazy" sizes="64px" width={64} height={80} />
                   )}
