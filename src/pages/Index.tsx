@@ -26,6 +26,7 @@ const Index = () => {
       <div className="below-fold">
         <Suspense fallback={null}>
           <ProductShowcase />
+          <LightShadeSection />
           <BenefitsGrid />
           <ImageGrid />
           <SocialProof />
