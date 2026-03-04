@@ -1,82 +1,114 @@
+## Redesign: Adopt Avoca.store Layout & Design
 
+The Avoca.store site has a distinctive design language: deep green color palette, organic/natural aesthetic, split-layout hero with product image on one side and text on the other, decorative leaf elements, accordion-style content blocks, full-bleed image grids, and a featured product section with FAQs.
 
-# Brand Repositioning: From AI Startup to Premium Hair Care
-
-This is a comprehensive brand overhaul to reposition the site as a luxury professional hair oil brand (90% premium hair care, 10% science-backed formulation).
-
----
-
-## What Gets Removed
-
-1. **AIToolsShowcase component** — entire "AI-Powered Suite" section with AI Mixologist, AI Expert, AI Cocktailing Guide, AI Salon Strategist, AI Marketing Suite cards
-2. **RoutineCustomizer component** — AI-powered routine generator
-3. **AskExpert component** — AI expert Q&A
-4. **Cocktailing component** — AI cocktailing guide
-5. **HowItWorks component** — "Three Steps to Smarter Styling" (AI tool workflow)
-6. **Revenue breakdown block** in PartnerSection (RM2,500 / RM6,250 MLM-style numbers)
-7. **Salon Strategist dialog** in PartnerSection (Generate Strategy AI tool)
-8. **Salon Post Generator** in PartnerSection (Instagram AI content generator)
+Here's the plan to adapt this layout to Golden Haira while keeping your brand content.
 
 ---
 
-## What Gets Rewritten
+### 1. Color Palette Overhaul
 
-### HeroSection
-- Headline: **"Restore. Strengthen. Elevate."** (replaces "Sell Smarter. Style Better.")
-- Subheading: **"THE GOLDEN HAIRA™ Argan Bonding Oil"**
-- Tagline: **"Professional-grade bonding oil formulated in France. Designed to restore strength, smoothness and radiant shine for chemically treated and damaged hair."**
-- Remove "Explore AI Tools" CTA; keep "Order Now" and "Partner With Us"
+Use the current cream/gold palette with an Avoca-inspired deep green scheme:
 
-### Navigation
-- Remove "How It Works" and "AI Tools" links
-- Add "Ingredients" link pointing to `#benefits`
-- Keep Product, Our Story, Partner, Order
+### 2. Hero Section — Split Layout
 
-### Marquee
-- Keep as-is (already on-brand: "FORMULATED IN FRANCE", "SALON EXCLUSIVE", etc.)
+Redesign `HeroSection.tsx` to match Avoca's split hero:
 
-### ProductShowcase
-- Rewrite description: *"The Golden Haira™ Argan Bonding Oil is a professional finishing oil designed to repair internal hair bonds, restore softness, and deliver long-lasting shine — without weight or grease."*
-- Add "Ideal for" list: Dry hair, Chemically treated, Color-treated, Heat-damaged
-- Add closing line: *"Lightweight. Powerful. Salon-approved."*
+- **Left half**: Dark green background with brand icon/logo, large serif headline, description paragraph, and "Order Now" button
+- **Right half**: Full-bleed product hero image (the bottle on greenery/natural backdrop)
+- Remove the current overlay gradient approach; use a true 50/50 grid layout
+- Add a small decorative brand mark above the headline
 
-### BenefitsGrid
-- Rewrite subtitle: Replace "Engineered with fortified amino acids..." with *"Formulated with fortified amino acids to reconstruct from within, delivering a lightweight, non-greasy, salon-approved finish."*
-- Refine individual ingredient descriptions per the brief (Pure Argan Oil, Fortified Amino Acids, Cyclopentasiloxane, Heat Protection)
+### 3. Navigation
 
-### SocialProof
-- Replace AI-focused testimonials with product-focused ones:
-  - *"Clients immediately feel the softness after blow-dry. It's become our go-to finishing oil."*
-  - *"Perfect retail product — lightweight but powerful. Clients keep coming back for it."*
-  - *"Best finishing oil for chemically treated hair. Noticeably stronger, shinier results."*
+Update `Navigation.tsx`:
 
-### PartnerSection
-- Remove Revenue Breakdown block, Strategist dialog, and Post Generator
-- Replace with elegant "Why Salons Love Golden Haira™" block: Strong retail repeat rate, Easy add-on during blow dry, Healthy protected margins, No online price competition
-- Keep partner benefit cards and contact card
+- Transparent/dark green background matching the hero
+- Logo on the left, links on the right
+- Simpler, more minimal styling to match Avoca's clean nav
 
-### CTABanner
-- Rewrite: *"Experience the Gold Standard in Hair Care"*
-- Subtitle: *"Join the salons already offering Golden Haira™ Argan Bonding Oil to their clients. Premium results. Protected margins. Effortless retail."*
+### 4. Marquee Banner
 
-### Index.tsx
-- Remove imports and usage of: HowItWorks, AIToolsShowcase, RoutineCustomizer, AskExpert, Cocktailing
+Keep the existing marquee but restyle:
 
----
+- Use the green color scheme instead of dark foreground
+- Slightly different text content style
 
-## What Stays Unchanged
-- FounderSection (already on-brand)
-- FloatingOrderButton
-- Footer
-- ClickSpark
-- Marquee
-- All product images/videos
-- All styling/CSS
+### 5. "Farm to Table" Style Section (Product Story)
 
----
+Create a new section or restyle `ProductShowcase.tsx`:
 
-## Technical Notes
-- Components removed from the page will have their files kept but unused (or deleted for cleanliness)
-- No backend/database changes needed
-- AI streaming libraries (`ai-stream.ts`, `ai-invoke.ts`) and edge function remain but are no longer referenced from the homepage
+- **Split layout**: Large product/lifestyle image on one side, text on the other
+- Decorative leaf/botanical elements in corners (using CSS or SVG)
+- Headline + paragraph describing the product origin story
+- Alternate image/text sides for visual rhythm
 
+### 6. Accordion Content Section ("Our Roots" style)
+
+Restyle or replace `BenefitsGrid.tsx`:
+
+- Use an **accordion** layout (like Avoca's "Our Roots", "The Essence", "Quality Assurance" sections)
+- Each item expands to reveal content
+- Sits alongside or below a lifestyle image
+- Uses the existing Radix accordion component
+
+### 7. Full-Bleed Image Grid
+
+Add a new section with a **4-column image grid** (like Avoca's usage images):
+
+- Full-width row of product/lifestyle images
+- No gaps or minimal gaps
+- Caption overlay or standalone heading above
+
+### 8. Featured Product Section
+
+Restyle `ProductShowcase.tsx` to match Avoca's featured product block:
+
+- Product image on the left
+- Product name, price, benefit icons in a horizontal row
+- Bullet-point feature list
+- Size selector and "Add to Cart" / "Order Now" button
+- Clean card-style layout
+
+### 9. FAQ Accordion
+
+Add a FAQ section using Radix accordion:
+
+- Common questions about the argan bonding oil
+- Sits below the featured product section
+- Clean expand/collapse with + icon
+
+### 10. Footer
+
+Restyle `Footer.tsx`:
+
+- Dark green background matching overall theme
+- Minimal layout with brand name, links, social icons
+
+### 11. Files to Modify
+
+
+| File                                 | Change                                   |
+| ------------------------------------ | ---------------------------------------- |
+| `src/index.css`                      | New color variables (green palette)      |
+| `src/components/HeroSection.tsx`     | Split 50/50 layout                       |
+| `src/components/Navigation.tsx`      | Green theme, minimal style               |
+| `src/components/Marquee.tsx`         | Color updates                            |
+| `src/components/ProductShowcase.tsx` | Major restyle to featured product layout |
+| `src/components/BenefitsGrid.tsx`    | Accordion-based layout                   |
+| `src/components/SocialProof.tsx`     | Restyle to match green theme             |
+| `src/components/FounderSection.tsx`  | Restyle, decorative elements             |
+| `src/components/PartnerSection.tsx`  | Green theme update                       |
+| `src/components/CTABanner.tsx`       | Green theme update                       |
+| `src/components/Footer.tsx`          | Green theme restyle                      |
+| `src/pages/Index.tsx`                | Add new image grid section               |
+
+
+### 12. New Components
+
+- **ImageGrid.tsx** — Full-bleed 4-column lifestyle image row
+- **FAQSection.tsx** — Accordion FAQ section using Radix
+
+### Summary
+
+This is a significant visual overhaul touching ~12 files. The structure of sections remains similar but the color palette shifts from cream/gold to deep green/cream, layouts shift to split 50/50 compositions, and interactive elements like accordions replace the current static grid cards.
