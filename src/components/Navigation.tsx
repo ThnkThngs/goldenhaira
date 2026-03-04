@@ -7,6 +7,7 @@ const navLinks = [
   { href: '#story', label: 'Our Story' },
   { href: '#partner', label: 'Partner' },
   { href: 'https://hairlibrary.co/product/argan-bonding-oil/', label: 'Order', external: true },
+  { href: '#light-shade', label: 'Light Shade' },
 ];
 
 const Navigation = () => {
