@@ -1,114 +1,26 @@
-## Redesign: Adopt Avoca.store Layout & Design
-
-The Avoca.store site has a distinctive design language: deep green color palette, organic/natural aesthetic, split-layout hero with product image on one side and text on the other, decorative leaf elements, accordion-style content blocks, full-bleed image grids, and a featured product section with FAQs.
-
-Here's the plan to adapt this layout to Golden Haira while keeping your brand content.
-
----
-
-### 1. Color Palette Overhaul
-
-Use the current cream/gold palette with an Avoca-inspired deep green scheme:
-
-### 2. Hero Section — Split Layout
-
-Redesign `HeroSection.tsx` to match Avoca's split hero:
-
-- **Left half**: Dark green background with brand icon/logo, large serif headline, description paragraph, and "Order Now" button
-- **Right half**: Full-bleed product hero image (the bottle on greenery/natural backdrop)
-- Remove the current overlay gradient approach; use a true 50/50 grid layout
-- Add a small decorative brand mark above the headline
-
-### 3. Navigation
-
-Update `Navigation.tsx`:
-
-- Transparent/dark green background matching the hero
-- Logo on the left, links on the right
-- Simpler, more minimal styling to match Avoca's clean nav
-
-### 4. Marquee Banner
-
-Keep the existing marquee but restyle:
-
-- Use the green color scheme instead of dark foreground
-- Slightly different text content style
-
-### 5. "Farm to Table" Style Section (Product Story)
-
-Create a new section or restyle `ProductShowcase.tsx`:
-
-- **Split layout**: Large product/lifestyle image on one side, text on the other
-- Decorative leaf/botanical elements in corners (using CSS or SVG)
-- Headline + paragraph describing the product origin story
-- Alternate image/text sides for visual rhythm
-
-### 6. Accordion Content Section ("Our Roots" style)
-
-Restyle or replace `BenefitsGrid.tsx`:
-
-- Use an **accordion** layout (like Avoca's "Our Roots", "The Essence", "Quality Assurance" sections)
-- Each item expands to reveal content
-- Sits alongside or below a lifestyle image
-- Uses the existing Radix accordion component
-
-### 7. Full-Bleed Image Grid
-
-Add a new section with a **4-column image grid** (like Avoca's usage images):
-
-- Full-width row of product/lifestyle images
-- No gaps or minimal gaps
-- Caption overlay or standalone heading above
-
-### 8. Featured Product Section
-
-Restyle `ProductShowcase.tsx` to match Avoca's featured product block:
-
-- Product image on the left
-- Product name, price, benefit icons in a horizontal row
-- Bullet-point feature list
-- Size selector and "Add to Cart" / "Order Now" button
-- Clean card-style layout
-
-### 9. FAQ Accordion
-
-Add a FAQ section using Radix accordion:
-
-- Common questions about the argan bonding oil
-- Sits below the featured product section
-- Clean expand/collapse with + icon
-
-### 10. Footer
-
-Restyle `Footer.tsx`:
-
-- Dark green background matching overall theme
-- Minimal layout with brand name, links, social icons
-
-### 11. Files to Modify
 
 
-| File                                 | Change                                   |
-| ------------------------------------ | ---------------------------------------- |
-| `src/index.css`                      | New color variables (green palette)      |
-| `src/components/HeroSection.tsx`     | Split 50/50 layout                       |
-| `src/components/Navigation.tsx`      | Green theme, minimal style               |
-| `src/components/Marquee.tsx`         | Color updates                            |
-| `src/components/ProductShowcase.tsx` | Major restyle to featured product layout |
-| `src/components/BenefitsGrid.tsx`    | Accordion-based layout                   |
-| `src/components/SocialProof.tsx`     | Restyle to match green theme             |
-| `src/components/FounderSection.tsx`  | Restyle, decorative elements             |
-| `src/components/PartnerSection.tsx`  | Green theme update                       |
-| `src/components/CTABanner.tsx`       | Green theme update                       |
-| `src/components/Footer.tsx`          | Green theme restyle                      |
-| `src/pages/Index.tsx`                | Add new image grid section               |
+## Revert to Cream/Gold Color Palette
 
+The Avoca-style layouts (split hero, accordions, image grid, FAQ) are already in place and will stay. Only the **color palette** in `src/index.css` needs to change — reverting from deep green to a warm cream/gold scheme.
 
-### 12. New Components
+### Color Variable Changes (`src/index.css`)
 
-- **ImageGrid.tsx** — Full-bleed 4-column lifestyle image row
-- **FAQSection.tsx** — Accordion FAQ section using Radix
+| Token | Current (Green) | New (Cream/Gold) |
+|-------|----------------|------------------|
+| `--background` | `160 25% 22%` (deep green) | `40 33% 96%` (warm cream) |
+| `--foreground` | `36 33% 93%` (cream) | `30 10% 15%` (dark brown/charcoal) |
+| `--card` | `160 22% 18%` (darker green) | `38 30% 92%` (slightly darker cream) |
+| `--primary` | stays gold | stays gold |
+| `--secondary` | green tones | warm neutral tones |
+| `--muted` | green tones | warm neutral tones |
+| `--border/input` | green tones | warm neutral tones |
+| `--dark/dark-deep` | deep green | dark warm brown |
 
-### Summary
+All component files use Tailwind semantic tokens (`bg-background`, `text-foreground`, `bg-card`, `text-primary`, etc.), so they will automatically pick up the new palette — **no component file changes needed**.
 
-This is a significant visual overhaul touching ~12 files. The structure of sections remains similar but the color palette shifts from cream/gold to deep green/cream, layouts shift to split 50/50 compositions, and interactive elements like accordions replace the current static grid cards.
+Only the custom utility class `bg-dark-deep` used in `Footer.tsx` and `CTABanner.tsx` will need the custom token updated in CSS, which is covered by the variable change.
+
+### Single File to Edit
+- **`src/index.css`** — Update all CSS custom property values to cream/gold/warm brown scheme
+
