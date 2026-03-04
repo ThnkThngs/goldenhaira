@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const CTABanner = () => {
   return (
-    <section className="py-24 bg-dark-deep text-accent-foreground">
+    <section className="py-24 text-accent-foreground bg-primary-foreground">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

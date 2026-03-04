@@ -2,7 +2,7 @@ import { Instagram, Phone } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="py-16 bg-dark-deep border-t border-border/30">
+    <footer className="py-16 border-t border-border/30 bg-primary">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
@@ -41,8 +41,8 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>);
+
 };
 
 export default Footer;
