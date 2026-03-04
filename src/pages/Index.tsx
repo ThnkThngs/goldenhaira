@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import Navigation from '@/components/Navigation';
 import Marquee from '@/components/Marquee';
 import HeroSection from '@/components/HeroSection';
+import LazySection from '@/components/LazySection';
 
 const ClickSpark = lazy(() => import('@/components/ClickSpark'));
 
@@ -26,20 +27,28 @@ const Index = () => {
       <Navigation />
       <HeroSection />
       <Marquee />
-      <div className="below-fold">
+      <LazySection rootMargin="300px 0px">
         <Suspense fallback={null}>
           <ProductShowcase />
+        </Suspense>
+      </LazySection>
+      <LazySection>
+        <Suspense fallback={null}>
           <LightShadeSection />
           <BenefitsGrid />
           <ImageGrid />
           <SocialProof />
+        </Suspense>
+      </LazySection>
+      <LazySection>
+        <Suspense fallback={null}>
           <FounderSection />
           <PartnerSection />
           <FAQSection />
           <CTABanner />
           <Footer />
         </Suspense>
-      </div>
+      </LazySection>
       <Suspense fallback={null}>
         <FloatingOrderButton />
       </Suspense>
