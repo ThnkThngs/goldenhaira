@@ -13,14 +13,14 @@ type MediaItem = { type: 'image'; src: string; thumb: string; alt: string } | { 
 
 const galleryMedia: MediaItem[] = [
   { type: 'video', src: '/videos/product-video-1.mp4', alt: 'Product video 1' },
-  { type: 'image', src: productHero, thumb: '/thumbs/hero.webp', alt: 'Product hero shot' },
+  { type: 'image', src: productHero, thumb: '/thumbs/hero-sm.webp', alt: 'Product hero shot' },
   { type: 'video', src: '/videos/product-video-2.mp4', alt: 'Product video 2' },
-  { type: 'image', src: product1, thumb: '/thumbs/1.webp', alt: 'Product with packaging' },
-  { type: 'image', src: product2, thumb: '/thumbs/2.webp', alt: 'Product alternate angle' },
-  { type: 'image', src: productHand, thumb: '/thumbs/hand.webp', alt: 'Product in hand' },
-  { type: 'image', src: productFront, thumb: '/thumbs/front.webp', alt: 'Product front view' },
-  { type: 'image', src: productBack, thumb: '/thumbs/back.webp', alt: 'Product back label' },
-  { type: 'image', src: productPair, thumb: '/thumbs/pair.webp', alt: 'Bottle and tube together' },
+  { type: 'image', src: product1, thumb: '/thumbs/1-sm.webp', alt: 'Product with packaging' },
+  { type: 'image', src: product2, thumb: '/thumbs/2-sm.webp', alt: 'Product alternate angle' },
+  { type: 'image', src: productHand, thumb: '/thumbs/hand-sm.webp', alt: 'Product in hand' },
+  { type: 'image', src: productFront, thumb: '/thumbs/front-sm.webp', alt: 'Product front view' },
+  { type: 'image', src: productBack, thumb: '/thumbs/back-sm.webp', alt: 'Product back label' },
+  { type: 'image', src: productPair, thumb: '/thumbs/pair-sm.webp', alt: 'Bottle and tube together' },
 ];
 
 const benefitIcons = [
