@@ -6,6 +6,7 @@ import HeroSection from '@/components/HeroSection';
 
 const FloatingOrderButton = lazy(() => import('@/components/FloatingOrderButton'));
 const ProductShowcase = lazy(() => import('@/components/ProductShowcase'));
+const LightShadeSection = lazy(() => import('@/components/LightShadeSection'));
 const BenefitsGrid = lazy(() => import('@/components/BenefitsGrid'));
 const ImageGrid = lazy(() => import('@/components/ImageGrid'));
 const SocialProof = lazy(() => import('@/components/SocialProof'));
