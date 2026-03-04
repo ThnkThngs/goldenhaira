@@ -1,26 +1,32 @@
 import { motion } from 'framer-motion';
-import { Droplet, Award, Sparkles, Shield } from 'lucide-react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+import productHand from '@/assets/product-hand.jpeg';
 
 const benefits = [
   {
-    icon: Droplet,
+    id: 'argan',
     title: 'Pure Argan Oil',
-    desc: 'Rich in antioxidants and essential fatty acids to deeply nourish, restore elasticity and enhance natural shine.',
+    desc: 'Rich in antioxidants and essential fatty acids to deeply nourish, restore elasticity and enhance natural shine. Sourced from Morocco and cold-pressed to preserve maximum potency.',
   },
   {
-    icon: Award,
+    id: 'amino',
     title: 'Fortified Amino Acids',
-    desc: 'Help reinforce weakened internal bonds and improve hair strength after chemical treatments.',
+    desc: 'Help reinforce weakened internal bonds and improve hair strength after chemical treatments. Our proprietary blend targets the cortex layer for lasting structural repair.',
   },
   {
-    icon: Sparkles,
+    id: 'siloxane',
     title: 'Cyclopentasiloxane',
-    desc: 'Delivers instant smoothness, reduces frizz and creates a silky, lightweight finish.',
+    desc: 'Delivers instant smoothness, reduces frizz and creates a silky, lightweight finish. Evaporates cleanly without buildup, leaving hair naturally soft.',
   },
   {
-    icon: Shield,
+    id: 'heat',
     title: 'Heat Protection',
-    desc: 'Protects hair from styling tools while maintaining softness and movement.',
+    desc: 'Protects hair from styling tools up to 230°C while maintaining softness and movement. Forms a breathable thermal shield that locks in moisture during heat styling.',
   },
 ];
 
@@ -28,39 +34,50 @@ const BenefitsGrid = () => {
   return (
     <section id="benefits" className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-4">
-            Premium Ingredients,{' '}
-            <span className="italic text-primary">Visible Results.</span>
-          </h2>
-          <p className="text-muted-foreground font-light max-w-xl mx-auto">
-            Formulated with fortified amino acids to reconstruct from within, delivering a lightweight,
-            non-greasy, salon-approved finish.
-          </p>
-        </motion.div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative aspect-[3/4] overflow-hidden"
+          >
+            <img
+              src={productHand}
+              alt="Golden Haira product in use"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {benefits.map((benefit, idx) => (
-            <motion.div
-              key={benefit.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="group p-8 border border-border hover:border-primary/50 transition-all duration-500 hover:shadow-lg"
-            >
-              <div className="w-12 h-12 flex items-center justify-center border border-primary/30 text-primary mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500">
-                <benefit.icon size={20} />
-              </div>
-              <h3 className="font-serif text-xl text-foreground mb-3">{benefit.title}</h3>
-              <p className="text-sm text-muted-foreground font-light leading-relaxed">{benefit.desc}</p>
-            </motion.div>
-          ))}
+          {/* Accordion */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <p className="text-xs tracking-[0.3em] uppercase text-primary mb-4">
+              Premium Ingredients
+            </p>
+            <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-8">
+              What's Inside
+            </h2>
+
+            <Accordion type="single" collapsible defaultValue="argan" className="w-full">
+              {benefits.map((b) => (
+                <AccordionItem key={b.id} value={b.id} className="border-border/50">
+                  <AccordionTrigger className="font-serif text-xl text-foreground hover:no-underline hover:text-primary py-5">
+                    {b.title}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground font-light leading-relaxed text-sm">
+                    {b.desc}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </motion.div>
         </div>
       </div>
     </section>
