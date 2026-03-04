@@ -5,26 +5,23 @@ const testimonials = [
   {
     salon: 'Hairkunst Salon',
     location: 'Kuala Lumpur',
-    quote:
-      'Clients immediately feel the softness after blow-dry. It\'s become our go-to finishing oil.',
+    quote: 'Clients immediately feel the softness after blow-dry. It\'s become our go-to finishing oil.',
   },
   {
     salon: 'Dashing Diva',
     location: 'Petaling Jaya',
-    quote:
-      'Perfect retail product — lightweight but powerful. Clients keep coming back for it.',
+    quote: 'Perfect retail product — lightweight but powerful. Clients keep coming back for it.',
   },
   {
     salon: 'Hairlibrary',
     location: 'Damansara',
-    quote:
-      'Best finishing oil for chemically treated hair. Noticeably stronger, shinier results.',
+    quote: 'Best finishing oil for chemically treated hair. Noticeably stronger, shinier results.',
   },
 ];
 
 const SocialProof = () => {
   return (
-    <section id="testimonials" className="py-24 bg-background">
+    <section id="testimonials" className="py-24 bg-card">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,7 +44,7 @@ const SocialProof = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.12 }}
-              className="border border-border bg-card p-8 flex flex-col gap-4"
+              className="border border-border/50 bg-background p-8 flex flex-col gap-4"
             >
               <div className="flex gap-1">
                 {[...Array(5)].map((_, j) => (
@@ -55,7 +52,7 @@ const SocialProof = () => {
                 ))}
               </div>
               <p className="text-sm text-foreground leading-relaxed italic">"{t.quote}"</p>
-              <div className="mt-auto pt-4 border-t border-border">
+              <div className="mt-auto pt-4 border-t border-border/50">
                 <p className="text-sm font-medium text-foreground">{t.salon}</p>
                 <p className="text-xs text-muted-foreground">{t.location}</p>
               </div>

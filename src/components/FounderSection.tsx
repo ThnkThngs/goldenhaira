@@ -1,28 +1,29 @@
 import { motion } from 'framer-motion';
 import { CheckCircle } from 'lucide-react';
-import founderImg from '@/assets/founder.png';
 
 const FounderSection = () => {
   return (
-    <section id="story" className="py-24 bg-muted/50">
+    <section id="story" className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+        >
           {/* Photo */}
           <div className="relative">
-            <div className="aspect-[3/4] bg-muted overflow-hidden">
+            <div className="aspect-[3/4] overflow-hidden">
               <img
                 alt="Bambang Soteto — Founder"
                 className="w-full h-full object-cover object-top"
-
                 loading="lazy"
-                sizes="(max-width: 1024px) 100vw, 576px" src="/lovable-uploads/674b2c2e-9654-4807-bfce-3f3ec1ab64c8.png" />
-
+                sizes="(max-width: 1024px) 100vw, 576px"
+                src="/lovable-uploads/674b2c2e-9654-4807-bfce-3f3ec1ab64c8.png"
+              />
             </div>
+            {/* Decorative corner element */}
+            <div className="absolute -bottom-4 -right-4 w-24 h-24 border border-primary/30 hidden lg:block" />
           </div>
 
           {/* Info */}
@@ -45,8 +46,8 @@ const FounderSection = () => {
           </div>
         </motion.div>
       </div>
-    </section>);
-
+    </section>
+  );
 };
 
 export default FounderSection;

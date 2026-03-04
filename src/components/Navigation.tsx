@@ -23,7 +23,7 @@ const Navigation = () => {
   }, [isMenuOpen]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border/30">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="flex items-center justify-between h-16">
           <a href="#" className="font-serif text-lg tracking-[0.15em] text-foreground">
@@ -37,7 +37,7 @@ const Navigation = () => {
                 key={link.href}
                 href={link.href}
                 {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-primary transition-colors"
+                className="text-xs tracking-[0.2em] uppercase text-foreground/60 hover:text-primary transition-colors"
               >
                 {link.label}
               </a>
@@ -55,10 +55,10 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* Mobile menu - CSS transition instead of framer-motion */}
+      {/* Mobile menu */}
       <div
         ref={menuRef}
-        className="md:hidden overflow-hidden bg-background border-b border-border transition-all duration-300 ease-in-out"
+        className="md:hidden overflow-hidden bg-background border-b border-border/30 transition-all duration-300 ease-in-out"
         style={{
           maxHeight: menuHeight,
           opacity: isMenuOpen ? 1 : 0,
@@ -71,7 +71,7 @@ const Navigation = () => {
               href={link.href}
               {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               onClick={() => setIsMenuOpen(false)}
-              className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-primary transition-colors"
+              className="text-xs tracking-[0.2em] uppercase text-foreground/60 hover:text-primary transition-colors"
             >
               {link.label}
             </a>
