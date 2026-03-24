@@ -1,4 +1,4 @@
-const productHero = '/images/product-hero.jpeg';
+const productHero = '/images/product-hero.webp';
 
 const HeroSection = () => {
   return (
